@@ -24,7 +24,8 @@ public class GameStoreTest {
         store.addPlayTime("Vasiliy", 3);
         assertEquals(store.getSumPlayedTime(), 3);
     }
- /*Тест на самого играющего*/
+
+    /*Тест на самого играющего*/
     @Test
     public void shouldMostPlayerTime(){
         GameStore store = new GameStore();

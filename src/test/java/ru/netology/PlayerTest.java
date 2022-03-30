@@ -50,7 +50,7 @@ public class PlayerTest {
         assertEquals(3, actual);
     }
 
-    @Test // Выкидывает исключение пр ипопытке сосчитать количество часов, которое играли в игру, если она НЕ УСТАНОВЛЕНА
+    @Test // Выкидывает исключение при попытке сосчитать количество часов, которое играли в игру, если она НЕ УСТАНОВЛЕНА
     public void shouldThrowExceptionWhenGameNotInstalled() {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");

@@ -68,15 +68,15 @@ public class Player {
      */
     public String mostPlayerByGenre(String genre) {
         int mostTime = 1;
-        Game mostPlayedGame = null;
+        String mostPlayedGame = null;
         for (Game gameName : playedTime.keySet()) {
             int playerTime = playedTime.get(gameName);
-            if (playerTime > mostTime) {
+            if ((playerTime > mostTime) && (gameName.getGenre().equals(genre))) {
                 mostTime = playerTime;
-                mostPlayedGame = gameName;
+                mostPlayedGame = gameName.getTitle();
             }
         }
-        return mostPlayedGame.getTitle();
+        return mostPlayedGame;
 
     }
 }

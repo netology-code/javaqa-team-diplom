@@ -46,7 +46,7 @@ public class PlayerTest {
         Player player = new Player("Petya");
         player.installGame(game);
 
-        int actual = player.play(game, 3);;
+        int actual = player.play(game, 3);
         assertEquals(3, actual);
     }
 

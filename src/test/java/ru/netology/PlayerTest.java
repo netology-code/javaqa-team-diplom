@@ -1,10 +1,10 @@
 package ru.netology;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
-
 
     @Test // Суммирует время, проигранныые во все игры жанра "Аркады" игроком "Петя", если добавлена ТОЛЬКО ОДНА ИГРА
     public void shouldSumGenreIfOneGame() {
@@ -20,11 +20,13 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
-    @Test // Суммирует время, проигранныые во все игры жанра "Аркады" игроком "Петя", если добавлено НЕСКОЛЬКО ИГР
+    @Test // Суммирует время, проигранныые во все игры жанра "Аркады" игроком "Петя",
+    // если добавлено НЕСКОЛЬКО ИГР одного жанра
     public void shouldSumGenreIfSomeGame() {
         GameStore store = new GameStore();
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
         Game game2 = store.publishGame("Покорение Марса", "Аркады");
+        Game game3 = store.publishGame("Покорение Марса 2", "Аркады");
 
         Player player = new Player("Petya");
         player.installGame(game1);
@@ -33,12 +35,16 @@ public class PlayerTest {
         player.installGame(game2);
         player.play(game2, 5);
 
-        int expected = 8;
-        int actual = player.sumGenre(game1.getGenre());
+        player.installGame(game3);
+        player.play(game3, 12);
+
+        int expected = 20;
+        int actual = player.sumGenre("Аркады");
         assertEquals(expected, actual);
     }
 
-    @Test // Суммирует время, проигранныые во все игры жанра "Аркады" игроком "Петя", если добавлено НЕСКОЛЬКО ИГР разного жанра
+    @Test // Суммирует время, проигранныые во все игры жанра "Аркады" игроком "Петя",
+    // если добавлено НЕСКОЛЬКО ИГР разных жанров
     public void shouldSumGenreIfSomeGameDifferentGenre() {
         GameStore store = new GameStore();
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");
@@ -53,10 +59,10 @@ public class PlayerTest {
         player.play(game2, 5);
 
         player.installGame(game3);
-        player.play(game3, 50);
+        player.play(game3, 12);
 
         int expected = 8;
-        int actual = player.sumGenre(game1.getGenre());
+        int actual = player.sumGenre("Аркады");
         assertEquals(expected, actual);
     }
 
@@ -72,7 +78,8 @@ public class PlayerTest {
         assertEquals(3, actual);
     }
 
-    @Test // Выкидывает исключение при попытке сосчитать количество часов, которое играли в игру, если она НЕ УСТАНОВЛЕНА
+    @Test
+    // Выкидывает исключение при попытке сосчитать количество часов, которое играли в игру, если она НЕ УСТАНОВЛЕНА
     public void shouldThrowExceptionWhenGameNotInstalled() {
         GameStore store = new GameStore();
         Game game = store.publishGame("Нетология Баттл Онлайн", "Аркады");
@@ -99,7 +106,7 @@ public class PlayerTest {
     }
 
     @Test // Выдает игру заданного жанра "Аркады", в которую играли бОльшее количество часов,
-          // если добавлены несколько игр разного жанра
+    // если добавлены несколько игр разного жанра
     public void shouldReturnMostPlayedByGenreWhenSomeGamesDifferentGenres() {
         GameStore store = new GameStore();
         Game game1 = store.publishGame("Нетология Баттл Онлайн", "Аркады");

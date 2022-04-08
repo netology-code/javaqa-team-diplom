@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+//MY CLASS
 public class GameStore {
     private List<Game> games = new ArrayList<>();
 

@@ -63,8 +63,6 @@ public class GameStoreTest {
     public void getSumPlayedTimeTest() {
         GameStore store = new GameStore();
 
-        Game game = store.publishGame("Танки", "онлайн");
-
         store.addPlayTime("1", 11);
         store.addPlayTime("2", 22);
         store.addPlayTime("3", 33);

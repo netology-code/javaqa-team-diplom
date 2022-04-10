@@ -63,8 +63,6 @@ public class PlayerTest<todo> {
     @Test
     public void shouldExpIfGameNotInstall() {
 
-        GameStore store = new GameStore();
-
         Player player = new Player("Vanek");
 
         assertThrows(RuntimeException.class, () -> {

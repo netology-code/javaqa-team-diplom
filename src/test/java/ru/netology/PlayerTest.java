@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-public class PlayerTest<todo> {
+public class PlayerTest {
 
     private GameStore store = new GameStore();
 
-    private Game mortalKombat = store.publishGame("Mortal Kombat X", "Fights");
+    Game mortalKombat = store.publishGame("Mortal Kombat X", "Fights");
     private Game injustice = store.publishGame("Injustice", "Fights");
     private Game rockNRollRacing = store.publishGame("Rock N Roll Racing", "Race");
     private Game needForSpeed = store.publishGame("Need For Speed", "Race");
@@ -78,7 +78,7 @@ public class PlayerTest<todo> {
         player.installGame(rockNRollRacing);
 
         player.play(mortalKombat, 6);
-        player.play(worldOfTanks, 5);
+        player.play(needForSpeed, 5);
         player.play(rockNRollRacing, 3);
 
 

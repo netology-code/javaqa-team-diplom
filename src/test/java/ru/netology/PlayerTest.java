@@ -78,7 +78,7 @@ public class PlayerTest {
         player.installGame(rockNRollRacing);
 
         player.play(mortalKombat, 6);
-        player.play(needForSpeed, 5);
+        player.play(injustice, 5);
         player.play(rockNRollRacing, 3);
 
 
